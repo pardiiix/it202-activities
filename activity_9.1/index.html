@@ -18,27 +18,7 @@
     </style>
   </head>
   <body>
-    <header class="mdc-top-app-bar remove-margin color-pink">
-      <div class="mdc-top-app-bar__row">
-        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-          <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
-          <span class="mdc-top-app-bar__title">Title</span>
-        </section>
-       </div>
-    </header>
-    
-    
-    <main class="mdc-top-app-bar--fixed-adjust">
-    <button class="mdc-button foo-button">
-      <div class="mdc-button__ripple"></div>
-      <span class="mdc-button__label">Button</span>
-      <script>mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));</script>
-    </button>
-      
-    </main>
-    
-    
-    <aside class="mdc-drawer">
+     <aside class="mdc-drawer mdc-drawer--modal">
       <div class="mdc-drawer__content">
         <nav class="mdc-list">
           <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
@@ -56,12 +36,39 @@
         </nav>
       </div>
     </aside>
+    <header class="mdc-top-app-bar remove-margin color-pink">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
+          <span class="mdc-top-app-bar__title">Title</span>
+        </section>
+       </div>
+    </header>
     
-    <script>
-    import {MDCList} from "@material/list";
-    const list = MDCList.attachTo(document.querySelector('.mdc-list'));
-    list.wrapFocus = true;
+    
+    <main class="mdc-top-app-bar--fixed-adjust">
+    <button class="mdc-button foo-button">
+      <div class="mdc-button__ripple"></div>
+      <span class="mdc-button__label">Button</span>
+     </button>
+      
+    </main>
+    
+    
+
+    
+     <script>
+       mdc.ripple.MDCRipple
+         .attachTo(document.querySelector('.foo-button'));
+
+       mdc.drawer.MDCDrawer
+         .attachTo(document.querySelector('aside.mdc-drawer'));      
+
+       mdc.topAppBar.MDCTopAppBar
+         .attachTo(document.querySelector('header.mdc-top-app-bar'));      
+      
     </script>
+
     
       </body>
 </html>
