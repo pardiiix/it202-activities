@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+    <script>
+
+      var db = new Dexie("MyFriendDB");
+      db.version(1).stores({
+	    friends: '++id,name,age,hometown',
+      enemies: '++id,name'
+      });
+      
+      db.friends.add(
+        {name: "Pardis",
+        age:22,
+        hometown: "Chicago"}
+      );
+      
+      db.enemies.add(
+        {name: "gav",
+        age:22,
+        hometown: "LA"}
+      );
+
+      db.friends.where('age').equals(22).toArray()
+      .then(data => console.log(data));
+    </script>
+  </body>
+</html>
