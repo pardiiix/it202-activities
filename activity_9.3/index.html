@@ -88,16 +88,32 @@
        let CDPAPI = "https://data.cityofchicago.org/resource/v6vf-nfxy.json";
        document.querySelectorAll(".foo-button").forEach(item => {
           item.addEventListener('click', event => {
+              let oldList = document.querySelectorAll("li.mdc-list-item");
+              console.log(oldList);
+              for (let i of oldList){
+                if(i != oldList[0]){
+                  document.querySelector(".mdc-list").removeChild(i)}
+                }
               let x = item.getAttribute("id");
               content = CDPAPI + "?sr_short_code=" + x + "&$LIMIT=5";
-              console.log(content);
+//               console.log(content);
               fetch(content)
                   .then(response => {return response.json()})
                   .then(json =>{
-                    console.log(json);
-              json[0].forEach(i =>{
-                   document.querySelector("#data").textContent = json[i];
-                })
+//                     console.log(json);
+//               json[0].forEach(i =>{
+//                    document.querySelector("#data").textContent = json[i];
+//                 })
+                 for(let element of json){
+//                    console.log(element);
+                   document.querySelector("#data").textContent = element["sr_type"];
+                   let listItem = document.querySelector('.mdc-list-item')
+                   let newLI = listItem.cloneNode(true);
+                   newLI.textContent = "sr_number: " + element["sr_number"];
+                   document.querySelector(".mdc-list").appendChild(newLI);
+                   
+                   
+                 }
               })
             
         }
