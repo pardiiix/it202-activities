@@ -109,7 +109,8 @@
                    document.querySelector("#data").textContent = element["sr_type"];
                    let listItem = document.querySelector('.mdc-list-item')
                    let newLI = listItem.cloneNode(true);
-                   newLI.textContent = "sr_number: " + element["sr_number"];
+                   newLI.textContent ="| owner_department: " + element["owner_department"] +
+                     " | street address: " + element["street_address"];
                    document.querySelector(".mdc-list").appendChild(newLI);
                    
                    
